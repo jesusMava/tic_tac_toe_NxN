@@ -23,10 +23,16 @@ describe 'fizzbuzz' do it
   end 
  end
 =end
-require 'spec_helper'
-RSpec.describe TicTacToeNxn::Suma do
+#require 'spec_helper'
+RSpec.describe TicTacToeNxn::ComprobarGane do
   it "find out the columna number" do
-    juego = TicTacToeNxn::Suma
-    #expect(juego.suma(1,2).to eq(1))
+    comprobar_gane = TicTacToeNxn::ComprobarGane
+    tablero = TicTacToeNxn::Tablero
+    juego = TicTacToeNxn::Juego
+    allow(juego).to receive(:tamano_tablero).and_return(3)
+    tablero.tamano_tablero = 3
+    tablero.tablero_inicial = [["X","O","O"],["X","X","O"],["X","-","-"]]
+    tablero.calcular_tamano_tablero
+    expect(comprobar_gane.linea_ganadora_horizontal(0, 'X')).to eq [1, 'X']
   end
 end

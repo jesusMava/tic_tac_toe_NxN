@@ -21,12 +21,13 @@ module TicTacToeNxn
     end
 
     def definir_tamano_tablero
-      #loop do
+      loop do
         print 'Tamaño del tablero '
         @tamano_tablero = gets.chomp
         @tamano_tablero = @tamano_tablero.to_i
         break if @tamano_tablero.positive?
-      #end
+      end
+
     end
 
     def mostrar_tablero
@@ -82,7 +83,7 @@ module TicTacToeNxn
     def validar_posicion_tablero(posicion_jugador = '')
       tab = @tablero.tablero
       loop do
-        posicion_jugador = gets.chomp
+        posicion_jugador = STDIN.gets.chomp
         posicion_jugador = posicion_jugador.to_i
         break if posicion_jugador.positive? && posicion_jugador <= tab
 
@@ -95,7 +96,7 @@ module TicTacToeNxn
       volver_a_jugar = ''
       loop do
         puts 'Deseas volver a jugar ? 1.Si 2.No'
-        volver_a_jugar = gets.chomp
+        volver_a_jugar = STDIN.gets.chomp
         volver_a_jugar = volver_a_jugar.to_i
         break if (volver_a_jugar == 1) || (volver_a_jugar == 2)
       end
@@ -112,14 +113,12 @@ module TicTacToeNxn
 
     def linea_ganadora_vertical(columna, simbolo, respuesta = 1)
       @tablero.tablero_inicial[columna].include? simbolo
-=begin
       @tablero.tablero_inicial[columna].each do |fila|
         if fila != simbolo
           respuesta = 0
           break
         end
       end
-=end
       [respuesta, simbolo]
     end
 
@@ -167,10 +166,7 @@ module TicTacToeNxn
   probar_gane = ComprobarGane.new(tablero)
 
   loop do
-    loop do
-      tablero.definir_tamano_tablero      
-    end
-    
+    tablero.definir_tamano_tablero
     tablero.inicializar_tablero_inicial
     tablero.calcular_tamano_tablero
     jugadores.jugador1
