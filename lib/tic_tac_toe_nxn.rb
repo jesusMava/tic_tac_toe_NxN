@@ -1,4 +1,3 @@
-
 module TicTacToeNxn
   # definir los jugadores y la variable que le corresponde
   class Jugadores
@@ -22,8 +21,8 @@ module TicTacToeNxn
 
     def definir_tamano_tablero
       loop do
-        print 'Tamaño del tablero '
-        @tamano_tablero = gets.chomp
+        puts 'Tamaño del tablero '
+        @tamano_tablero = $stdin.gets.chomp
         @tamano_tablero = @tamano_tablero.to_i
         break if @tamano_tablero.positive?
       end
@@ -83,7 +82,7 @@ module TicTacToeNxn
     def validar_posicion_tablero(posicion_jugador = '')
       tab = @tablero.tablero
       loop do
-        posicion_jugador = STDIN.gets.chomp
+        posicion_jugador = $stdin.gets.chomp
         posicion_jugador = posicion_jugador.to_i
         break if posicion_jugador.positive? && posicion_jugador <= tab
 
@@ -96,7 +95,7 @@ module TicTacToeNxn
       volver_a_jugar = ''
       loop do
         puts 'Deseas volver a jugar ? 1.Si 2.No'
-        volver_a_jugar = STDIN.gets.chomp
+        volver_a_jugar = $stdin.gets.chomp
         volver_a_jugar = volver_a_jugar.to_i
         break if (volver_a_jugar == 1) || (volver_a_jugar == 2)
       end
